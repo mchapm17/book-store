@@ -3,4 +3,3 @@ DROP DATABASE IF EXISTS book_store_db;
 
 -- CREATE DATABASE
 CREATE DATABASE book_store_db;
-
