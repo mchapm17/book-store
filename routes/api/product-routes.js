@@ -33,15 +33,15 @@ router.get('/:id', async(req, res) => {
         where: {
           id: req.params.id
         },
-        include: [
-          {
-            model: Category,
-            attributes: ['category_name']
-          }, 
-          {
-            model: Tag,
-            attributes: [Tag_name]
-          }]
+        // include: [
+        //   {
+        //     model: Category,
+        //     attributes: ['category_name']
+        //   }, 
+        //   {
+        //     model: Tag,
+        //     attributes: [Tag_name]
+        //   }]
       });
       res.status(200).json(productData);
     } catch (err) {
