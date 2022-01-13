@@ -31,8 +31,8 @@ router.get('/:id', async(req, res) => {
     try {
       const productData = await Product.findAll({
         where: {
-          id: req.params.id
-        },
+          id: req.params.id}
+        // },
         // include: [
         //   {
         //     model: Category,
