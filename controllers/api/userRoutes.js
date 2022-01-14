@@ -58,4 +58,21 @@ router.post('/logout', (req, res) => {
   }
 });
 
+router.post('/signup', async (req, res) => {
+  const { name, email, password } = req.body;
+  try {
+    if (!name || !email || !password) {
+      return res.status(406).json({ message: "Please include a Name, Email, & Password" })
+    } 
+    const existingUser = await User.findOne({ where: { email } })
+    if (existingUser) {
+      return res.status(406).json({ message: "Please include a valid email" })
+    };
+    const newUser = await User.create({ name, email, password });
+    return res.status(200).json({ user: newUser, message: "New User Created!" })
+  } catch {
+
+  }
+})
+
 module.exports = router;
