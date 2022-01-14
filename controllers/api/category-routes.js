@@ -1,28 +1,6 @@
 const router = require('express').Router();
 const { Category, Product } = require('../../models');
 
-// The `/api/categories` endpoint
-
-router.get('/', async(req, res) => {
-  // find all categories
-  // be sure to include its associated Products
-  try {
-    const categoryData = await Category.findAll({
-      // include: [
-      //   {
-      //     model: Category,
-      //     attributes: ['category_name']
-      //   }, 
-      //   {
-      //     model: Tag,
-      //     attributes: [Tag_name]
-      //   }]
-    });
-    res.status(200).json(categoryData);
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
 
 router.get('/:id', async(req, res) => {
   // find one category by its `id` value
@@ -48,26 +26,8 @@ router.get('/:id', async(req, res) => {
   }
 });
 
-router.post('/', async(req, res) => {
-  // create a new category
- Category.create(req.body)
-  .then((category) => {
-    if (req.body.tagIds.length) {
-      const categoryTagIdArr = req.body.tagIds.map((tag_id) => {
-        return {
-          category_id: category.id,
-          tag_id,
-        };
-      });
-      return CategoryTag.bulkCreate(categoryTagIdArr);
-    }
-    res.status(200).json(category);
-  })
-  .then((categoryTagIds) => res.status(200).json(categoryTagIds))
-  .catch((err) => {
-    console.log(err);
-    res.status(400).json(err);
-  });
+router.post('/cart', async(req, res) => {
+ 
 });
 
 router.put('/:id', async(req, res) => {

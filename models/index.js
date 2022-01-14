@@ -1,6 +1,7 @@
 // import models
 const Product = require('./Product');
 const Category = require('./Category');
+const User = require('./User')
 
 // Products belongsTo Category
 Product.belongsTo(Category, {
@@ -15,4 +16,5 @@ Category.hasMany(Product, {
 module.exports = {
   Product,
   Category,
+  User,
 };
