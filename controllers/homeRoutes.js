@@ -5,19 +5,17 @@ router.get('/', async (req, res) => {
     try {
         const homeProducts = await Product.findAll({
 
+            attributes: ['product_name', 'author', 'price'],
             include: [{
-                model: Product,
-                attributes: ['product_name', 'author', 'price'],
-            },
-            {
                 model: Category,
                 attributes: ['id'],
-            }]
+            },
+            ]
         });
-        const product = homeProducts.get({ plain: true });
+        const products = homeProducts.map((val) => val.get({ plain: true }));
 
 
-        res.render('homepage', { product })
+        res.render('homepage', { products })
     } catch (err) {
         res.status(500).json(err);
     }
@@ -40,6 +38,15 @@ router.get('/checkout', async (req, res) => {
     }
 });
 
+router.get('/login', async (req, res) => {
+    try {
+        
+        res.render('login', {  })
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
+
 router.get('/cart', async (req, res) => {
     try {
         const homeProducts = await Product.findAll({
@@ -50,7 +57,6 @@ router.get('/cart', async (req, res) => {
             }]
         });
         const product = homeProducts.get({ plain: true });
-
         res.render('cart', { product })
     } catch (err) {
         res.status(500).json(err);
