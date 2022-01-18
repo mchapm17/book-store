@@ -8,20 +8,20 @@
         <span>
             {{!-- {{#if product.length}} --}}
             <h2>Your Cart</h2>
-            {{!-- <div class='container row'">
+            <div class='container row cart-products'>
                 {{#each products }}
                 <div class="card m-3 bg-secondary text-light" style="width: 18rem;">
-                    <img src="{{img}}" class="card-img-top" alt="Book image sourced from online url">
+                    <img src="{{product.img}}" class="card-img-top" alt="Book image sourced from online url">
                     <div class="card-body">
-                        <h5 class="card-title">{{product_name}}</h5>
-                        <p class="card-text">by: {{author}}</p>
-                        <p class="card-text">${{price}}</p>
+                        <h5 class="card-title">{{product.product_name}}</h5>
+                        <p class="card-text">by: {{product.author}}</p>
+                        <p class="card-text">${{product.price}}</p>
 
-                        <button  class="btn btn-danger" data-id="{{product.id}} id="cart-products">Delete from Cart</button>
+                        <button  class="btn btn-danger" data-id="{{product.id}}" id="cart-products">Delete from Cart</button>
                     </div>
                 </div>
                 {{/each}}
-            </div> --}}
+            </div>
             <h2 id="sub-total">SubTotal:</h2>
         </span>
         <a href="/checkout" class="btn btn-primary btn-lg btn-block" role="button">Check Out Now</a>

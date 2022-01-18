@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Product, Category } = require('../models');
+const { Product, Category, Cart, User } = require('../models');
 
 router.get('/', async (req, res) => {
     try {
@@ -48,10 +48,23 @@ router.get('/login', async (req, res) => {
 
 router.get('/cart', async (req, res) => {
     try {
-        const homeProducts = await Product.findAll({
-
+        console.log(req.session)
+        const cartData = await Cart.findAll({
+            where: {
+                user_id: req.session.user_id,
+                
+            },
+            include: [{
+                model: Product,
+                attributes: ['id', 'product_name', 'author', 'price', 'img'],
+            }, 
+            {
+                model: User,
+                attributes: ['id'],
+            }],
         });
-        const products = homeProducts.map((val) => val.get({ plain: true }));
+        const products = cartData.map((val) => val.get({ plain: true }));
+        console.log( products)
         res.render('cart', { products })
     } catch (err) {
         res.status(500).json(err);

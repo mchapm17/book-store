@@ -15,25 +15,27 @@
 <body>
   <header>
     <h1>
-      <a href="/" id="title">👨‍💻📚CYM Books</a>
-      </h1>
+      <a href="/" id="title">
+      <div class="title">👨‍💻📚CYM Books</div>
+      </a>
+    </h1>
   </header>
   <div class="container">
     {{!-- <nav class="row"> --}}
 
-<nav class="navbar navbar-light bg-secondary container">
-  {{!-- <a class="navbar-brand" href="#">CYM Books</a>
-  <div class="collapse navbar-collapse row" id="navbarNavAltMarkup"> --}}
-    <div class="navbar navbar-nav row">
-      {{#if logged_in}}
-      <a type="button" id="logout"class="btn btn-light no-button col">Log Out</a>
-      {{else}}
-      <a href="/login" type="button" class="btn btn-light">Log In</a>
-      {{/if}}
-      <a href="/cart" type="button" class="btn btn-light">Cart</a>
-    </div>
-  </div>
-</nav>
+      <nav class="navbar navbar-light bg-secondary container">
+        {{!-- <a class="navbar-brand" href="#">CYM Books</a>
+        <div class="collapse navbar-collapse row" id="navbarNavAltMarkup"> --}}
+          <div class="navbar navbar-nav row">
+            {{#if logged_in}}
+            <a type="button" id="logout" class="btn btn-light no-button col">Log Out</a>
+            {{else}}
+            <a href="/login" type="button" class="btn btn-light">Log In</a>
+            {{/if}}
+            <a href="/cart" type="button" class="btn btn-light">Cart</a>
+          </div>
+        </div>
+      </nav>
 
 
       {{!-- {{#if logged_in}}
@@ -48,29 +50,42 @@
   </header>
   <main class="container mt-3">
     <div class="row">
-    
-    {{{ body }}}
+
+      {{{ body }}}
     </div>
   </main>
   <footer>
-<div class="card" style="width: 90%;">
-  <div class="card-header text-muted">
-    Creators
-  </div>
-  <div class="card-body">
-      <footer class="blockquote-footer text-bold">Yonas Woldemichael . Malachi Chapman . Can Phan
-      </footer>
-    </blockquote>
-  </div>
-</div>
+    <div class="card" style="width: 90%;">
+      <div class="card-header text-muted">
+        Creators
+      </div>
+      <div class="card-body">
+        <footer class="blockquote-footer text-bold">Yonas Woldemichael . Malachi Chapman . Can Phan
+        </footer>
+        </blockquote>
+      </div>
+    </div>
 
   </footer>
   </div>
 
   {{#if logged_in}}
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"
+    integrity="sha512-z4OUqw38qNLpn1libAN9BsoDx6nbNFio5lA6CuTp9NlK83b89hgyCVq+N5FdBJptINztxn1Z3SaKSKUS5UP60Q=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  {{!--
+  <script src="anime.min.js"></script> --}}
+  <script>
+    anime({
+      targets: '.title',
+      translateX: 750,
+      duration: 3000,
+    })
+  </script>
   <script src="/js/logout.js"></script>
   {{/if}}
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
 </body>
 
