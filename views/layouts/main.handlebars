@@ -7,34 +7,62 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-  <link rel="stylesheet" href="/public/css/jass.css">
-  <link rel="stylesheet" href="/public/css/style.css">
+  <link rel="stylesheet" href="/css/jass.css">
+  <link rel="stylesheet" href="/css/style.css">
   <title>Book store</title>
 </head>
 
 <body>
   <header>
-    <h1>CYM Books</h1>
+    <h1>
+      <a href="/" id="title">👨‍💻📚CYM Books</a>
+      </h1>
   </header>
   <div class="container">
-    <nav class="row">
+    {{!-- <nav class="row"> --}}
+
+<nav class="navbar navbar-light bg-secondary container">
+  {{!-- <a class="navbar-brand" href="#">CYM Books</a>
+  <div class="collapse navbar-collapse row" id="navbarNavAltMarkup"> --}}
+    <div class="navbar navbar-nav row">
       {{#if logged_in}}
+      <a type="button" id="logout"class="btn btn-light no-button col">Log Out</a>
+      {{else}}
+      <a href="/login" type="button" class="btn btn-light">Log In</a>
+      {{/if}}
+      <a href="/cart" type="button" class="btn btn-light">Cart</a>
+    </div>
+  </div>
+</nav>
+
+
+      {{!-- {{#if logged_in}}
       <a href="/profile">profile</a> |
       <button class="no-button" id="logout">logout</button>
       {{else}}
       <a href="/login">login</a>
       {{/if}}
       <a href="/cart">cart</a>
-    </nav>
+    </nav> --}}
   </div>
   </header>
-  <main class="container container-fluid mt-5">
-    <h2>
-      Best Sellers
-    </h2>
+  <main class="container mt-3">
+    <div class="row">
+    
     {{{ body }}}
+    </div>
   </main>
   <footer>
+<div class="card" style="width: 90%;">
+  <div class="card-header text-muted">
+    Creators
+  </div>
+  <div class="card-body">
+      <footer class="blockquote-footer text-bold">Yonas Woldemichael . Malachi Chapman . Can Phan
+      </footer>
+    </blockquote>
+  </div>
+</div>
 
   </footer>
   </div>
@@ -42,6 +70,8 @@
   {{#if logged_in}}
   <script src="/js/logout.js"></script>
   {{/if}}
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
 </body>
 
 </html>

@@ -1,15 +1,18 @@
-<div class='container row'>
+<div class='container row' id="products">
+    <input type="hidden" id="userid" value="{{user_id}}">
     {{#each products }}
-    <div class="card m-2 bg-secondary text-light" style="width: 18rem;">
-        <img src="..." class="card-img-top" alt="...">
+    <div class="card m-3 bg-secondary text-light" style="width: 18rem;">
+        <img src="{{img}}" class="card-img-top" alt="Book image sourced from online url">
         <div class="card-body">
             <h5 class="card-title">{{product_name}}</h5>
-            <p class="card-text">{{author}}</p>
-            <p class="card-text">{{price}}</p>
-            <a href="#" class="btn btn-primary">Buy it Now</a>
+            <p class="card-text">by: {{author}}</p>
+            <p class="card-text">${{price}}</p>
+            {{#if ../logged_in}}
+                <button class="btn btn-primary addtocart" type="submit" data-id="{{id}}">Add to Cart</button>
+            {{/if}}
         </div>
     </div>
     {{/each}}
-
-
 </div>
+
+<script src="/js/cart.js"></script>
