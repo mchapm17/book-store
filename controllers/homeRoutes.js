@@ -4,8 +4,6 @@ const { Product, Category } = require('../models');
 router.get('/', async (req, res) => {
     try {
         const homeProducts = await Product.findAll({
-
-            attributes: ['product_name', 'author', 'price'],
             include: [{
                 model: Category,
                 attributes: ['id'],
@@ -15,7 +13,8 @@ router.get('/', async (req, res) => {
         const products = homeProducts.map((val) => val.get({ plain: true }));
 
 
-        res.render('homepage', { products })
+        res.render('homepage', { products, logged_in: req.session.logged_in, user_id: req.session.user_id })
+        console.log(req.session)
     } catch (err) {
         res.status(500).json(err);
     }
@@ -23,16 +22,16 @@ router.get('/', async (req, res) => {
 
 router.get('/checkout', async (req, res) => {
     try {
-        const homeProducts = await Product.findAll({
+        // const homeProducts = await Product.findAll({
 
-            include: [{
-                model: Product,
-                attributes: ['product_name', 'author', 'price'],
-            }]
-        });
-        const product = homeProducts.get({ plain: true });
+        //     include: [{
+        //         model: Product,
+        //         attributes: ['product_name', 'author', 'price'],
+        //     }]
+        // });
+        // const product = homeProducts.get({ plain: true });
 
-        res.render('checkout', { product })
+        res.render('checkout', {  })
     } catch (err) {
         res.status(500).json(err);
     }
@@ -51,13 +50,9 @@ router.get('/cart', async (req, res) => {
     try {
         const homeProducts = await Product.findAll({
 
-            include: [{
-                model: Product,
-                attributes: ['product_name', 'author', 'price'],
-            }]
         });
-        const product = homeProducts.get({ plain: true });
-        res.render('cart', { product })
+        const products = homeProducts.map((val) => val.get({ plain: true }));
+        res.render('cart', { products })
     } catch (err) {
         res.status(500).json(err);
     }
