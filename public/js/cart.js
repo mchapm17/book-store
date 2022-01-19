@@ -17,6 +17,7 @@ for (let i = 0; i < addToCartEl.length; i++) {
             });
             console.log(response);
             if (response.ok) {
+                console.log('add to cart')
                 // document.location.reload();
             }
         } catch {

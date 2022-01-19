@@ -33,7 +33,7 @@ router.post('/:id', async (req, res) => {
                 {
                     model: Product,
                     where: {
-                        id: product_id,
+                        id: req.body.product_id,
                     }
                 }]
         });
