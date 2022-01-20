@@ -2,6 +2,7 @@ const router = require('express').Router();
 const { Product, Category, Cart, User } = require('../models');
 
 router.get('/', async (req, res) => {
+    console.log("in the home routes")
     try {
         const homeProducts = await Product.findAll({
             include: [{
@@ -11,6 +12,7 @@ router.get('/', async (req, res) => {
             ]
         });
         const products = homeProducts.map((val) => val.get({ plain: true }));
+        console.log(products)
 
 
         res.render('homepage', { products, logged_in: req.session.logged_in, user_id: req.session.user_id })

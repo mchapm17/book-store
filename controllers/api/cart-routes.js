@@ -26,6 +26,7 @@ router.get('/:id', async (req, res) => {
 router.post('/:id', async (req, res) => {
     console.log(req.body)
     try {
+<<<<<<< HEAD
         // let cartData = await Cart.findOne({
         //     where: {
         //         user_id: req.session.user_id,
@@ -38,6 +39,20 @@ router.post('/:id', async (req, res) => {
         //             }
         //         }]
         // });
+=======
+        let cartData = await Cart.findOne({
+            where: {
+                user_id: req.params.id,
+            },
+            include: [
+                {
+                    model: Product,
+                    where: {
+                        id: req.body.product_id,
+                    }
+                }]
+        });
+>>>>>>> main
 
         // if (!cartData) {
             console.log('*******!!!!***************************')

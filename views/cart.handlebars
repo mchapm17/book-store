@@ -4,11 +4,15 @@
         <a href="/login" type="button" class="btn btn-secondary float-end">Log In/Sign Up</a>
     </nav>
 
-    <body>
+    <div>
         <span>
             {{!-- {{#if product.length}} --}}
             <h2>Your Cart</h2>
+<<<<<<< HEAD
             <div class='container row cart-products'>
+=======
+            <div class='container row'">
+>>>>>>> main
                 {{#each products }}
                 <div class="card m-3 bg-secondary text-light" style="width: 18rem;">
                     <img src="{{product.img}}" class="card-img-top" alt="Book image sourced from online url">
@@ -25,5 +29,5 @@
             <h2 id="sub-total">SubTotal:</h2>
         </span>
         <a href="/checkout" class="btn btn-primary btn-lg btn-block" role="button">Check Out Now</a>
-    </body>
+    </div>
 </div>

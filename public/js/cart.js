@@ -18,6 +18,7 @@ const CartProducts = document.getElementsByClassName('cart-products')
             });
             console.log(response);
             if (response.ok) {
+                console.log('add to cart')
                 // document.location.reload();
             }
         } catch {
