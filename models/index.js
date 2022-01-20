@@ -16,19 +16,23 @@ Category.hasMany(Product, {
   onDelete: 'CASCADE'
 });
 
-Cart.belongsTo(User, {
-  foreignKey: 'user_id'
-})
-
-Cart.belongsToMany(Product, {
-  through: CartProducts,
-  foreignKey: 'cart_id',
+User.hasMany(Cart, {
+  foreignKey: 'user_id',
+  onDelete: 'CASCADE',
 });
 
-Product.belongsToMany(Cart, {
-  through: CartProducts,
+Product.hasMany(Cart, {
   foreignKey: 'product_id',
+  onDelete: 'CASCADE',
+});
+
+Cart.belongsTo(User, {
+  foreignKey: 'user_id',
 })
+
+Cart.belongsTo(Product, {
+  foreignKey: 'product_id',
+});
 
 module.exports = {
   Product,

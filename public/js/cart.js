@@ -1,12 +1,13 @@
 const addToCartEl = document.querySelectorAll('.addtocart');
 const dataID = (element) => element.getAttribute('data-id');
 const userId = document.getElementById('userid').value;
+const CartProducts = document.getElementsByClassName('cart-products')
 // const delFromCart = document.querySelector()
 
 
-for (let i = 0; i < addToCartEl.length; i++) {
-    const element = addToCartEl[i];
-    element.addEventListener('click', async () => {
+// for (let i = 0; i < addToCartEl.length; i++) {
+//     const element = addToCartEl[i];
+//     element.addEventListener('click', async () => {
         try {
             const productId = dataID(element)
             console.log(productId);
@@ -22,11 +23,11 @@ for (let i = 0; i < addToCartEl.length; i++) {
             }
         } catch {
         }
-    }
+//     }
 
-    );
+//     );
 
-}
+// }
 
 
 
