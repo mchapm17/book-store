@@ -26,6 +26,7 @@ router.get('/:id', async (req, res) => {
 router.post('/:id', async (req, res) => {
     console.log(req.body)
     try {
+        
         // let cartData = await Cart.findOne({
         //     where: {
         //         user_id: req.session.user_id,
@@ -63,7 +64,7 @@ router.delete('/:id', async (req, res) => {
     try {
         const cartData = await Cart.destroy({
             where: {
-                user_id: req.params.id
+                user_id: req.session.user_id
             },
         });
         res.status(200).json(cartData);

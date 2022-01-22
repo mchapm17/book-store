@@ -1,38 +1,31 @@
-const addToCartEl = document.querySelectorAll('.addtocart');
+const deleteButtons = document.getElementsByClassName('deletebtn');
 const dataID = (element) => element.getAttribute('data-id');
-const userId = document.getElementById('userid').value;
-const CartProducts = document.getElementsByClassName('cart-products')
-// const delFromCart = document.querySelector()
+
+// const delFromCart = document.querySelector({{product.id}})
 
 
-// for (let i = 0; i < addToCartEl.length; i++) {
-//     const element = addToCartEl[i];
-//     element.addEventListener('click', async () => {
-        try {
-            const productId = dataID(element)
-            console.log(productId);
-            const response = await fetch(`/api/cart/${userId}`, {
-                method: 'POST',
-                body: JSON.stringify({ user_id: userId, product_id: productId }),
-                headers: { 'Content-Type': 'application/json' },
-            });
-            console.log(response);
-            if (response.ok) {
-                // document.location.reload();
-            }
-        } catch {
+
+
+
+
+
+console.log(deleteButtons);
+for (let i = 0; i < deleteButtons.length; i++) {
+    const element = deleteButtons[i];
+    console.log(element);
+    element.addEventListener('click', async () => {
+        const productId = dataID(element)
+        const response = await fetch(`/api/cart/${productId}`, {
+            method: 'DELETE',
+            body: JSON.stringify({ product_id: productId }),
+            headers: { 'Content-Type': 'application/json' },
+        });
+        console.log(response);
+        if (response.ok) {
+            // document.location.reload();
         }
-//     }
-
-//     );
-
-// }
-
-
-
-
-
-
+    })
+};
 
 
 
